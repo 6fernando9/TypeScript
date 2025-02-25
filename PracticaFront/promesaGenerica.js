@@ -1,0 +1,15 @@
+async function hacerPeticion(url) {
+    try {
+        const respuesta = await fetch(url);
+        if (!respuesta.ok) {
+            throw new Error(`Error: ${respuesta.status}`);
+        }
+        return await respuesta.json();
+    }
+    catch (error) {
+        console.error("Error en la petición:", error);
+        return null;
+    }
+}
+// Usamos la función para obtener usuarios
+hacerPeticion("https://jsonplaceholder.typicode.com/users").then((datos) => console.log("Datos obtenidos:", datos));
